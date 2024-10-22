@@ -1,33 +1,35 @@
 <html>
 
-<script src="https://vbsols--sandbox.sandbox.my.site.com/sites/lightning/lightningOut.js"> </script>
+<script src="https://vbsols--sandbox.sandbox.my.site.com/sites/lightning/lightningOut.js"></script>
 
-    <div data-lightning-out="true"></div>
+<div id="lightning" data-lightning-out="true"></div>
 
-    <script>
-    const appName = 'c:auraApp'
-    const componentName = 'c:helloWorld'
-    const lightningEndpoint = 'https://vbsols--sandbox.sandbox.my.site.com/sites'
-    const targetElement = document.querySelector("[data-lightning-out]")
-    const componentAttributes = {
-    
-    };
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Ensure the DOM is loaded before you call $Lightning
+        const appName = 'c:auraApp';
+        const componentName = 'c:helloWorld';
+        const lightningEndpoint = 'https://vbsols--sandbox.sandbox.my.site.com/sites';
+        const targetElement = document.querySelector("[data-lightning-out]");
+        const componentAttributes = {};
 
-    
-    $Lightning.use(
-        appName,
-        function() {
-            // Callback once framework and app are loaded
-            $Lightning.createComponent(
-                componentName, // Top-level component of your app
-                componentAttributes, // Attributes to set on the component (leave empty for now)
-                targetElement, // The ID of the container div where the component will be inserted
-                function(cmp) {
-                    console.log("Lightning Web Component was created successfully");
-                }
-            );
-        },
-        lightningEndpoint
-    );
+        // Use Lightning Out only after everything is loaded
+        $Lightning.use(
+            appName,
+            function() {
+                // Callback once framework and app are loaded
+                $Lightning.createComponent(
+                    componentName, // Top-level component of your app
+                    componentAttributes, // Attributes to set on the component (leave empty for now)
+                    targetElement, // The ID of the container div where the component will be inserted
+                    function(cmp) {
+                        console.log("Lightning Web Component was created successfully");
+                    }
+                );
+            },
+            lightningEndpoint
+        );
+    });
 </script>
-</html> 
+
+</html>
